@@ -1,0 +1,106 @@
+# Copyright The Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//build/config/ios/rules.gni")
+
+bundle_data("assets") {
+sources = [
+
+"resource/ImageError.png",
+"resource/ImageError@2x.png",
+"resource/ImageError@3x.png",
+"resource/ImageSelectedOff.png",
+"resource/ImageSelectedOff@2x.png",
+"resource/ImageSelectedOff@3x.png",
+"resource/ImageSelectedOn.png",
+"resource/ImageSelectedOn@2x.png",
+"resource/ImageSelectedOn@3x.png",
+"resource/ImageSelectedSmallOff.png",
+"resource/ImageSelectedSmallOff@2x.png",
+"resource/ImageSelectedSmallOff@3x.png",
+"resource/ImageSelectedSmallOn.png",
+"resource/ImageSelectedSmallOn@2x.png",
+"resource/ImageSelectedSmallOn@3x.png",
+"resource/PlayButtonOverlayLarge.png",
+"resource/PlayButtonOverlayLarge@2x.png",
+"resource/PlayButtonOverlayLarge@3x.png",
+"resource/PlayButtonOverlayLargeTap.png",
+"resource/PlayButtonOverlayLargeTap@2x.png",
+"resource/PlayButtonOverlayLargeTap@3x.png",
+"resource/UIBarButtonItemArrowLeft.png",
+"resource/UIBarButtonItemArrowLeft@2x.png",
+"resource/UIBarButtonItemArrowLeft@3x.png",
+"resource/UIBarButtonItemArrowRight.png",
+"resource/UIBarButtonItemArrowRight@2x.png",
+"resource/UIBarButtonItemArrowRight@3x.png",
+"resource/UIBarButtonItemGrid.png",
+"resource/UIBarButtonItemGrid@2x.png",
+"resource/UIBarButtonItemGrid@3x.png",
+"resource/VideoOverlay.png",
+"resource/VideoOverlay@2x.png",
+"resource/VideoOverlay@3x.png",
+
+]
+outputs = [
+"{{bundle_resources_dir}}/{{source_file_part}}",
+]
+}
+
+source_set("mwphoto") {
+
+  sources = [
+"DACircularProgressView.h",
+"DACircularProgressView.m",
+"DALabeledCircularProgressView.h",
+"DALabeledCircularProgressView.m",
+"MWCaptionView.h",
+"MWCaptionView.m",
+"MWCommon.h",
+"MWGridCell.h",
+"MWGridCell.m",
+"MWGridViewController.h",
+"MWGridViewController.m",
+"MWPhoto.h",
+"MWPhoto.m",
+"MWPhotoBrowser.h",
+"MWPhotoBrowser.m",
+"MWPhotoBrowserPrivate.h",
+"MWPhotoProtocol.h",
+"MWTapDetectingImageView.h",
+"MWTapDetectingImageView.m",
+"MWTapDetectingView.h",
+"MWTapDetectingView.m",
+"MWZoomingScrollView.h",
+"MWZoomingScrollView.m",
+"UIImage+MWPhotoBrowser.h",
+"UIImage+MWPhotoBrowser.m",
+  ]
+
+deps = [
+":assets",
+]
+
+libs = [
+"Foundation.framework",
+"UIKit.framework",
+"CFNetwork.framework",
+"MobileCoreServices.framework",
+"z",
+"SystemConfiguration.framework",
+"CoreGraphics.framework",
+"Photos.framework",
+"QuartzCore.framework",
+"MediaPlayer.framework",
+]
+  configs -= [
+    "//build/config/gcc:symbol_visibility_hidden",
+    "//build/config/compiler:chromium_code",
+  ]
+
+  configs += [
+    "//build/config/compiler:default_code",
+    "//build/config/compiler:enable_arc",
+    "//build/config/gcc:symbol_visibility_default",
+  ]
+}

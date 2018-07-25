@@ -1,0 +1,33 @@
+# Copyright The Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//build/config/ios/rules.gni")
+
+source_set("filemanager") {
+    sources = [
+        "FileControl.h",
+        "FileControl.m",
+    ]
+
+    libs = [
+        "Foundation.framework",
+        "UIKit.framework",
+        "CFNetwork.framework",
+        "MobileCoreServices.framework",
+        "sqlite3",
+        "SystemConfiguration.framework",
+        "CoreGraphics.framework",
+    ]
+
+    configs -= [
+        "//build/config/gcc:symbol_visibility_hidden",
+        "//build/config/compiler:chromium_code",
+    ]
+
+    configs += [
+        "//build/config/compiler:no_chromium_code",
+        "//build/config/compiler:enable_arc",
+        "//build/config/gcc:symbol_visibility_default",
+    ]
+}

@@ -1,0 +1,81 @@
+# Copyright The Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//build/config/ios/rules.gni")
+
+bundle_data("assets") {
+sources = [
+"resource/mjrefresh_arrow@2x.png",
+]
+outputs = [
+"{{bundle_resources_dir}}/{{source_file_part}}",
+]
+}
+
+source_set("mjrefresh") {
+
+sources = [
+"MJRefresh.h",
+"MJRefreshAutoFooter.h",
+"MJRefreshAutoFooter.m",
+"MJRefreshAutoGifFooter.h",
+"MJRefreshAutoGifFooter.m",
+"MJRefreshAutoNormalFooter.h",
+"MJRefreshAutoNormalFooter.m",
+"MJRefreshAutoStateFooter.h",
+"MJRefreshAutoStateFooter.m",
+"MJRefreshBackFooter.h",
+"MJRefreshBackFooter.m",
+"MJRefreshBackGifFooter.h",
+"MJRefreshBackGifFooter.m",
+"MJRefreshBackNormalFooter.h",
+"MJRefreshBackNormalFooter.m",
+"MJRefreshBackStateFooter.h",
+"MJRefreshBackStateFooter.m",
+"MJRefreshComponent.h",
+"MJRefreshComponent.m",
+"MJRefreshConst.h",
+"MJRefreshConst.m",
+"MJRefreshFooter.h",
+"MJRefreshFooter.m",
+"MJRefreshGifHeader.h",
+"MJRefreshGifHeader.m",
+"MJRefreshHeader.h",
+"MJRefreshHeader.m",
+"MJRefreshNormalHeader.h",
+"MJRefreshNormalHeader.m",
+"MJRefreshStateHeader.h",
+"MJRefreshStateHeader.m",
+"NSBundle+MJRefresh.h",
+"NSBundle+MJRefresh.m",
+"UIScrollView+MJExtension.h",
+"UIScrollView+MJExtension.m",
+"UIScrollView+MJRefresh.h",
+"UIScrollView+MJRefresh.m",
+"UIView+MJExtension.h",
+"UIView+MJExtension.m",
+]
+
+deps = [
+":assets",
+]
+
+libs = [
+"Foundation.framework",
+"UIKit.framework",
+"CFNetwork.framework",
+"CoreGraphics.framework",
+]
+
+configs -= [
+"//build/config/gcc:symbol_visibility_hidden",
+"//build/config/compiler:chromium_code",
+]
+
+configs += [
+"//build/config/compiler:no_chromium_code",
+"//build/config/compiler:enable_arc",
+"//build/config/gcc:symbol_visibility_default",
+]
+}

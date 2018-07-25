@@ -1,0 +1,71 @@
+# Copyright The Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//build/config/ios/rules.gni")
+
+source_set("sdwebimage") {
+    sources = [
+"MKAnnotationView+WebCache.h",
+"MKAnnotationView+WebCache.m",
+"NSData+ImageContentType.h",
+"NSData+ImageContentType.m",
+"NSImage+WebCache.h",
+"NSImage+WebCache.m",
+"SDImageCache.h",
+"SDImageCache.m",
+"SDImageCacheConfig.h",
+"SDImageCacheConfig.m",
+"SDWebImage.h",
+"SDWebImageCompat.h",
+"SDWebImageCompat.m",
+"SDWebImageDecoder.h",
+"SDWebImageDecoder.m",
+"SDWebImageDownloader.h",
+"SDWebImageDownloader.m",
+"SDWebImageDownloaderOperation.h",
+"SDWebImageDownloaderOperation.m",
+"SDWebImageManager.h",
+"SDWebImageManager.m",
+"SDWebImageOperation.h",
+"SDWebImagePrefetcher.h",
+"SDWebImagePrefetcher.m",
+"UIButton+WebCache.h",
+"UIButton+WebCache.m",
+"UIImage+GIF.h",
+"UIImage+GIF.m",
+"UIImage+MultiFormat.h",
+"UIImage+MultiFormat.m",
+"UIImage+WebP.h",
+"UIImage+WebP.m",
+"UIImageView+HighlightedWebCache.h",
+"UIImageView+HighlightedWebCache.m",
+"UIImageView+WebCache.h",
+"UIImageView+WebCache.m",
+"UIView+WebCache.h",
+"UIView+WebCache.m",
+"UIView+WebCacheOperation.h",
+"UIView+WebCacheOperation.m",
+    ]
+
+    libs = [
+        "Foundation.framework",
+        "UIKit.framework",
+        "CFNetwork.framework",
+        "MobileCoreServices.framework",
+        "sqlite3",
+        "SystemConfiguration.framework",
+        "CoreGraphics.framework",
+    ]
+
+    configs -= [
+        "//build/config/gcc:symbol_visibility_hidden",
+        "//build/config/compiler:chromium_code",
+    ]
+
+    configs += [
+        "//build/config/compiler:no_chromium_code",
+        "//build/config/compiler:enable_arc",
+        "//build/config/gcc:symbol_visibility_default",
+    ]
+}
